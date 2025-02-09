@@ -1,4 +1,4 @@
-# ArXiv Markdown Parser
+# ArXiv Markdown Parser - Chrome / Edge Extension
 
 **Turn ArXiv Papers into Markdown with One Click**
 
@@ -8,7 +8,7 @@ Are you tired of wrestling with PDFs when you need to analyze or excerpt researc
 
 ## Table of Contents
 
-- [ArXiv Markdown Parser](#arxiv-markdown-parser)
+- [ArXiv Markdown Parser - Chrome / Edge Extension](#arxiv-markdown-parser---chrome--edge-extension)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
     - [Why Markdown Matters](#why-markdown-matters)
