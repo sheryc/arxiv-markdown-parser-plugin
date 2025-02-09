@@ -4,8 +4,6 @@
 
 Are you tired of wrestling with PDFs when you need to analyze or excerpt research papers? In the age of LLMs, having clean, accessible text is more important than ever. The ArXiv Markdown Parser Chrome extension is built to streamline your research workflow by converting arXiv papers into clean, readable Markdown with a single click.
 
----
-
 ## Table of Contents
 
 - [ArXiv Markdown Parser - Chrome / Edge Extension](#arxiv-markdown-parser---chrome--edge-extension)
@@ -20,8 +18,6 @@ Are you tired of wrestling with PDFs when you need to analyze or excerpt researc
   - [License](#license)
   - [Acknowledgments](#acknowledgments)
 
----
-
 ## Overview
 
 The ArXiv Markdown Parser is designed to simplify the process of extracting content from arXiv papers. Whether you're conducting literature reviews, performing detailed analyses, or integrating research into LLM workflows, this extension helps you bypass the cumbersome process of PDF extraction. Instead, it converts the entire paper—including equations, tables, figures, and internal references—into well-structured Markdown, making it easier to read, share, and annotate.
@@ -32,16 +28,12 @@ The ArXiv Markdown Parser is designed to simplify the process of extracting cont
 - **Fast Table & Equation Copying:** Research papers often contain complex tables and equations. Converting to Markdown allows you to quickly copy and paste these elements into your notes or LLM prompts without formatting issues.
 - **Seamless Collaboration:** Markdown is one of the most popular formats for academic and technical documentation. Its compatibility with version control systems (like Git) makes it perfect for group research settings, collaborative wikis, or shared repositories.
 
----
-
 ## Features
 
 - **One-Click Conversion:** Simply open any arXiv paper (abs, pdf, or html) and click the extension icon to instantly convert the content into Markdown.
 - **Customizable Output:** Choose whether to include a table of contents and references in your Markdown output.
 - **Enhanced Research Workflow:** Quickly extract and organize key components of research papers for rapid summarization, annotation, or further analysis.
 - **Improved Equation Handling:** Easily obtain LaTeX or Markdown versions of equations for use in your notes, presentations, or LLM prompts.
-
----
 
 ## Installation
 
@@ -69,8 +61,6 @@ The extension is under review in Chrome Web Store.
 3. **Installation Complete:**  
    The extension should now appear in your Chrome toolbar. You are ready to convert arXiv papers into Markdown with a single click.
 
----
-
 ## Usage
 
 1. **Open an arXiv Paper:**  
@@ -85,18 +75,12 @@ The extension is under review in Chrome Web Store.
 4. **Get Your Markdown:**  
    The extension will instantly convert the paper into Markdown format, including all equations, tables, figures, and internal references as links.
 
----
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
 
 ## Acknowledgments
 
 - **LaTeXML** and **Turndown** for powering the conversion process.
 
----
-
-*Happy Researching!*
+*Happy Researching!* (=・ω・=)
