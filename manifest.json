@@ -3,12 +3,23 @@
     "description": "Fetches arXiv paper in HTML and converts it to Markdown with LaTeX inlined.",
     "version": "1.0",
     "manifest_version": 3,
+    "icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
     "permissions": [
       "activeTab",
       "scripting"
     ],
     "action": {
-      "default_popup": "popup.html"
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      },
+      "default_title": "ArXiv Markdown Parser"
     },
     "background": {
       "service_worker": "background.js"
