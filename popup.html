@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ArXiv Parser</title>
+    <style>
+      body {
+        min-width: 300px;
+        min-height: 150px;
+        font-family: sans-serif;
+        margin: 10px;
+      }
+      textarea {
+        width: 100%;
+        height: 200px;
+      }
+      button {
+        margin: 4px 0;
+        padding: 6px 10px;
+      }
+      label {
+        display: block;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>ArXiv Markdown Parser</h3>
+    <button id="convertBtn">Get Markdown</button>
+
+    <!-- New checkboxes -->
+    <label>
+      <input type="checkbox" id="removeTable" />
+      Remove content table
+    </label>
+    <label>
+      <input type="checkbox" id="removeRefs" />
+      Remove references
+    </label>
+
+    <div id="error" style="color: red; margin-top: 10px;"></div>
+    <div id="markdownContainer" style="margin-top: 10px;">
+      <textarea id="markdownOutput"></textarea>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{
+    "name": "ArXiv Markdown Parser",
+    "description": "Fetches arXiv paper in HTML and converts it to Markdown with LaTeX inlined.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://arxiv.org/abs/*",
+          "*://arxiv.org/pdf/*",
+          "*://arxiv.org/html/*"
+        ],
+        "js": [
+          "lib/turndown.umd.js", 
+          "lib/turndown-plugin-gfm.js",
+          "contentScript.js"
+        ],
+        "run_at": "document_end"
+      }
+    ]
+  }
+  
