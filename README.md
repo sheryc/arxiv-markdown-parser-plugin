@@ -45,6 +45,8 @@ The ArXiv Markdown Parser is designed to simplify the process of extracting cont
 
 ## Installation
 
+The extension is under review in Chrome Web Store.
+
 ### Prerequisites
 
 - [Google Chrome](https://www.google.com/chrome/) or any Chromium-based browser.
@@ -94,7 +96,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgments
 
 - **LaTeXML** and **Turndown** for powering the conversion process.
-- 
+
 ---
 
 *Happy Researching!*
