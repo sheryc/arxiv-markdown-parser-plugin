@@ -37,8 +37,10 @@ async function parseArxiv(arxivId, removeRefs = false, removeTable = false) {
     replacement: function (content, node) {
       // We'll use the node's textContent as the equation text
       let eqnText = node.textContent.trim();
-      // Collapse multiple spaces/newlines into a single space
       eqnText = eqnText.replace(/\s+/g, " ");
+      eqnText = eqnText.replace(/^\$/, "");
+      eqnText = eqnText.replace(/\(\d+\)$/, "");
+      eqnText = eqnText.replace(/\$$/, "");
       return `$$ ${eqnText} $$`;
     },
   });
@@ -87,13 +89,21 @@ function convertAllMathMLtoLatex(root) {
   mathElements.forEach((math) => {
     const annotation = math.querySelector('annotation[encoding="application/x-tex"]');
     if (annotation && annotation.textContent) {
-      const latexSource = annotation.textContent.trim();
+      let latexSource = annotation.textContent.trim();
+      latexSource = latexSource.replace(/(?<!\\)%/g, "");
+      latexSource = latexSource.replace(/\\(?=[_^])/g, "");
+      latexSource = latexSource.replace(/\\(?=[\[\]])/g, "");
+      // console.log(latexSource);
+      // Replace the <math> element with inline LaTeX delimited by $ signs.
       math.replaceWith(`$${latexSource}$`);
+      console.log(math)
     } else {
+      console.log("No annotation found");
       math.replaceWith(math.textContent);
     }
   });
 }
+
 
 function removeReferences(markdown) {
   const refMarkers = ["References ----------", "###### References"];
