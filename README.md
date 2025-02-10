@@ -48,8 +48,7 @@ The extension is under review in Chrome Web Store.
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/ArXiv-Markdown-Parser.git
-   cd ArXiv-Markdown-Parser
+   git clone https://github.com/sheryc/arxiv-markdown-parser-plugin.git
    ```
 
 2. **Load the Extension in Chrome:**
