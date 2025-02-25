@@ -1,8 +1,13 @@
 # ArXiv Markdown Parser - Chrome / Edge Extension
 
+![GitHub License](https://img.shields.io/github/license/sheryc/arxiv-markdown-parser-plugin) ![GitHub Repo stars](https://img.shields.io/github/stars/sheryc/arxiv-markdown-parser-plugin) < Please leave a 🌟 if you find this plugin useful :D
+
+
 **Turn ArXiv Papers into Markdown with One Click**
 
 Are you tired of wrestling with PDFs when you need to analyze or excerpt research papers? In the age of LLMs, having clean, accessible text is more important than ever. The ArXiv Markdown Parser Chrome extension is built to streamline your research workflow by converting arXiv papers into clean, readable Markdown with a single click.
+
+> Note: Currently the extension only supports papers with an HTML version. Most of the new papers have an HTML version but some are not. [It's a beta feature of ArXiv](https://info.arxiv.org/about/accessible_HTML.html) and more papers will be supported in the future.
 
 ## Table of Contents
 
