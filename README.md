@@ -56,11 +56,13 @@ The extension is under review in Chrome Web Store.
    git clone https://github.com/sheryc/arxiv-markdown-parser-plugin.git
    ```
 
+   or alternatively, download the zip or tarball file in the latest release and unzip it.
+
 2. **Load the Extension in Chrome:**
 
    - Open Chrome and navigate to `chrome://extensions/`.
    - Enable **Developer Mode** (toggle in the top-right corner).
-   - Click **Load unpacked** and select the directory where you cloned the repository.
+   - Click **Load unpacked** and select the directory where you cloned the repository or unzipped the zipfile / tarball.
 
 3. **Installation Complete:**  
    The extension should now appear in your Chrome toolbar. You are ready to convert arXiv papers into Markdown with a single click.
