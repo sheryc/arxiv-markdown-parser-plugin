@@ -1,7 +1,8 @@
 # ArXiv Markdown Parser - Chrome / Edge Extension
 
-![GitHub License](https://img.shields.io/github/license/sheryc/arxiv-markdown-parser-plugin) ![GitHub Repo stars](https://img.shields.io/github/stars/sheryc/arxiv-markdown-parser-plugin) < Please leave a 🌟 if you find this plugin useful :D
+![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/pgklmbjeooblkfcgbibhkjpbbhoabbbo) ![GitHub License](https://img.shields.io/github/license/sheryc/arxiv-markdown-parser-plugin) ![GitHub Repo stars](https://img.shields.io/github/stars/sheryc/arxiv-markdown-parser-plugin) < Please leave a 🌟 if you find this plugin useful :D
 
+**🔥 Update: The plugin is now live on Chrome Web Store: [Chrome Web Store Link](https://chromewebstore.google.com/detail/arxiv-markdown-parser/pgklmbjeooblkfcgbibhkjpbbhoabbbo)**
 
 **Turn ArXiv Papers into Markdown with One Click**
 
@@ -42,13 +43,17 @@ The ArXiv Markdown Parser is designed to simplify the process of extracting cont
 
 ## Installation
 
-The extension is under review in Chrome Web Store.
+### Through Chrome Web Store
 
-### Prerequisites
+The extension is live on [Chrome Web Store](https://chromewebstore.google.com/detail/arxiv-markdown-parser/pgklmbjeooblkfcgbibhkjpbbhoabbbo). I recommend installing from here if you're using Chrome or Edge.
+
+### Manual Installation
+
+#### Prerequisites
 
 - [Google Chrome](https://www.google.com/chrome/) or any Chromium-based browser.
 
-### Steps
+#### Steps
 
 1. **Clone the Repository:**
 
