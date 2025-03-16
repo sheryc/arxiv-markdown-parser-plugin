@@ -29,6 +29,36 @@ async function parseArxiv(arxivId, removeRefs = false, removeTable = false) {
   });
   turndownService.use(turndownPluginGfm.gfm);
 
+  turndownService.addRule('mathContentTables', {
+    filter: function (node) {
+      return (
+        node.nodeName === 'TABLE' && 
+        node.innerHTML.includes('$') && 
+        !/ltx_equationgroup|ltx_eqn_align|ltx_eqn_table/.test(node.className || '')
+      )
+    },
+    replacement: function (content, node) {
+      const rows = Array.from(node.rows);
+      let markdown = '';
+      
+      rows.forEach((row, rowIndex) => {
+        const cells = Array.from(row.cells);
+        
+        // Preserve cell content including math formatting
+        markdown += '| ' + cells.map(cell => {
+          return cell.textContent.trim();
+        }).join(' | ') + ' |\n';
+        
+        // Add separator row after first row
+        if (rowIndex === 0) {
+          markdown += '| ' + cells.map(() => '---').join(' | ') + ' |\n';
+        }
+      });
+      
+      return '\n\n' + markdown + '\n\n';
+    }
+  });
+
   // turn LaTeX equation tables into $$ block equations $$
   turndownService.addRule("latexEquationTables", {
     filter: function (node) {
