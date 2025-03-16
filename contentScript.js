@@ -19,7 +19,14 @@ async function parseArxiv(arxivId, removeRefs = false, removeTable = false) {
   fixTabularTables(doc);
 
   // setup Turndown with GFM plugin
-  const turndownService = new TurndownService();
+  const turndownService = new TurndownService({
+    headingStyle: "atx",
+    codeBlockStyle: "fenced",
+    fence: "```",
+    bulletListMarker: "-",
+    emDelimiter: "*",
+    strongDelimiter: "**"
+  });
   turndownService.use(turndownPluginGfm.gfm);
 
   // turn LaTeX equation tables into $$ block equations $$
@@ -54,6 +61,9 @@ async function parseArxiv(arxivId, removeRefs = false, removeTable = false) {
   // unescape double backslashes for correct LaTeX
   markdown = unescapeDoubleBackslashes(markdown);
 
+  // Fix any remaining escaped underscores in LaTeX
+  markdown = fixLatexUnderscores(markdown);
+
   if (removeRefs) {
     markdown = removeReferences(markdown);
   }
@@ -84,6 +94,14 @@ function fixTabularTables(root) {
   });
 }
 
+function fixLatexUnderscores(markdown) {
+  // Fix any remaining escaped underscores in LaTeX expressions
+  return markdown.replace(/\$([^$]*?)\$/g, function(match, latex) {
+    // Replace \_ with _ and \^ with ^
+    return '$' + latex.replace(/\\_/g, '_').replace(/\\\^/g, '^') + '$';
+  });
+}
+
 function convertAllMathMLtoLatex(root) {
   const mathElements = root.querySelectorAll("math");
   mathElements.forEach((math) => {
@@ -91,7 +109,7 @@ function convertAllMathMLtoLatex(root) {
     if (annotation && annotation.textContent) {
       let latexSource = annotation.textContent.trim();
       latexSource = latexSource.replace(/(?<!\\)%/g, "");
-      latexSource = latexSource.replace(/\\(?=[_^])/g, "");
+      latexSource = latexSource.replace(/\\([_^])/g, "$1");
       latexSource = latexSource.replace(/\\(?=[\[\]])/g, "");
       // console.log(latexSource);
       // Replace the <math> element with inline LaTeX delimited by $ signs.
