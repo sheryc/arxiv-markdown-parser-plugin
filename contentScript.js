@@ -96,10 +96,14 @@ async function parseArxiv(arxivId, removeRefs = false, removeTable = false) {
 
   if (removeRefs) {
     markdown = removeReferences(markdown);
+  } else {
+    markdown = preserveReferencesLineBreaks(markdown);
   }
 
   if (removeTable) {
     markdown = removeContentTable(markdown);
+  } else {
+    markdown = reformatTableOfContents(markdown);
   }
   
   return markdown;
@@ -111,6 +115,73 @@ function removeAllAttributes(elem) {
     elem.removeAttribute(elem.attributes[0].name);
   }
 }
+
+function reformatTableOfContents(markdown) {
+  const paragraphs = markdown.split("\n\n");
+  
+  if (paragraphs.length > 1) {
+    const tocParagraph = paragraphs[1];
+    if (tocParagraph.includes("http") && (tocParagraph.includes("[1") || tocParagraph.includes("[2"))) {
+      const linkPattern = /(\[[^\]]+\]\([^)]+\))/g;
+      const links = tocParagraph.match(linkPattern) || [];
+      
+      if (links.length > 0) {
+        const formattedLinks = [];
+        
+        for (const link of links) {
+          const sectionMatch = link.match(/\[(\d+(?:\.\d+)*)\s+([^\]]+)\]/);
+          
+          if (sectionMatch) {
+            const sectionNumber = sectionMatch[1]; // e.g., "1", "2.1"
+            const parts = sectionNumber.split('.');
+            const level = parts.length;
+            
+            const indent = '  '.repeat(level - 1);
+            formattedLinks.push(indent + link);
+          } else {
+            formattedLinks.push(link);
+          }
+        }
+        paragraphs[1] = formattedLinks.join('\n');
+      }
+    }
+  }
+  
+  return paragraphs.join("\n\n");
+}
+
+function preserveReferencesLineBreaks(markdown) {
+  const refMarkers = ["References ----------", "## References", "### References", "#### References", "###### References"];
+  
+  let refSection = null;
+  for (const marker of refMarkers) {
+    const markerIndex = markdown.indexOf(marker);
+    if (markerIndex !== -1) {
+      let endIndex = markdown.length;
+      const nextHeadingMatch = markdown.slice(startIndex).match(/\n\s*#(?!#)/);
+      if (nextHeadingMatch) {
+        endIndex = startIndex + nextHeadingMatch.index;
+      }
+      
+      refSection = {
+        before: markdown.substring(0, markerIndex),
+        marker: marker,
+        content: markdown.substring(startIndex, endIndex),
+        after: markdown.substring(endIndex)
+      };
+      break;
+    }
+  }
+  
+  if (!refSection) {
+    return markdown; // No references found
+  }
+
+  let formattedRefs = refSection.content;
+  formattedRefs = formattedRefs.replace(/(?!^)\s*-\s+/g, '\n\n-   ');
+  return refSection.before + refSection.marker + formattedRefs + refSection.after;
+}
+
 
 function fixTabularTables(root) {
   // Select all <table> elements that have class="ltx_tabular"
